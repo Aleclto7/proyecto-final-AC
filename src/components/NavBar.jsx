@@ -3,24 +3,38 @@ import { Link } from 'react-router-dom';
 
 export const NavBar = () => {
     return(
-        <Navbar bg="dark" variant="dark" expand="lg">
-            <Container>
-                <img
-                    alt="icon"
-                    src="https://images.icon-icons.com/2785/PNG/512/trolley_cart_icon_177366.png"
-                    width="40"
-                    height="40"
-                    className="d-inline-block align-top"
-                />
-                <Navbar.Brand as={Link} to="/">Todo por 2 pesos</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link as={Link} to="/">Home</Nav.Link>
-                        <Nav.Link as={Link} to="/about">About</Nav.Link>
-                        <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
+        <Navbar bg="dark" variant="dark underline" expand="lg" className="justify-content-between">
+            <Container className='d-flex justify-content-between'>
+                <div class='d-flex align-items-center'>
+                    <img
+                        alt="Logo"
+                        src="https://png.pngtree.com/png-clipart/20210310/original/pngtree-mascot-logo-red-bird-transparent-background-png-image_5949929.jpg"
+                        width="40"
+                        height="40"
+                        class="d-inline-block align-top me-3 border-0 border-secondary rounded-circle"
+                    />
+                    <Navbar.Brand as={Link} to="/">Todo por 2 pesos</Navbar.Brand>
+                </div>
+                <div class='d-flex align-items-center'>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto" variant='underline'>
+                            <Nav.Link as={Link} to="/">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/about">Ofertas</Nav.Link>
+                            <Nav.Link as={Link} to="/contact">Mas valorados</Nav.Link>
+                            <Nav.Link as={Link} to="/contact">Administracion</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                    <a as={Link} to='/' >
+                        <img 
+                            src="https://images.icon-icons.com/2785/PNG/512/trolley_cart_icon_177366.png" 
+                            alt="Icono Carrito" 
+                            width="40"
+                            height="40"
+                            class="d-inline-block ms-3 align-top border border-secondary rounded"
+                        />
+                    </a>
+                </div>
             </Container>
         </Navbar>
     )

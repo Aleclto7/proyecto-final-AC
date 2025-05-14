@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
+    <>
       <Router>
         <div>
           <NavBar/>
@@ -17,6 +18,26 @@ function App() {
             </Routes>
         </div>
       </Router>
+
+      <footer>
+        <div className='d-flex justify-content-center align-items-center bg-dark text-light' style={{height: '50px'}}>
+          <p className='m-0'>© 2025 Todo por 2 pesos</p>
+        </div>
+        <div className='d-flex justify-content-center align-items-center bg-dark text-light' style={{height: '50px'}}>
+          <p className='m-0'>Desarrollado por Alexis Calixto</p>
+        </div>
+        <div className='d-flex justify-content-center align-items-center bg-dark text-light' style={{height: '50px'}}>
+          <p className='m-0'>Contacto: alexiscfx1@gmail.com</p>
+        </div>
+        <div className='d-flex justify-content-center align-items-center bg-dark text-light' style={{height: '50px'}}>
+          <p className='m-0'>Redes Sociales:  
+            <a href='https:instagram.com'>Instagram </a> 
+            - 
+            <a href='https:twitter.com'> Twitter</a>
+          </p>
+        </div>
+      </footer>
+    </>
   )
 }
 
