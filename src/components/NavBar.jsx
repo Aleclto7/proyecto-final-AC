@@ -13,16 +13,16 @@ export const NavBar = () => {
                         height="40"
                         class="d-inline-block align-top me-3 border-0 border-secondary rounded-circle"
                     />
-                    <Navbar.Brand as={Link} to="/">Todo por 2 pesos</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/">Aguizon</Navbar.Brand>
                 </div>
                 <div class='d-flex align-items-center'>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto" variant='underline'>
                             <Nav.Link as={Link} to="/">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/about">Ofertas</Nav.Link>
-                            <Nav.Link as={Link} to="/contact">Mas valorados</Nav.Link>
-                            <Nav.Link as={Link} to="/contact">Administracion</Nav.Link>
+                            <Nav.Link as={Link} to="/about">Offers</Nav.Link>
+                            <Nav.Link as={Link} to="/contact">Popular products</Nav.Link>
+                            <Nav.Link as={Link} to="/contact">Admin</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                     <a as={Link} to='/' >
