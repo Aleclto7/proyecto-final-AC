@@ -1,7 +1,7 @@
 import {NavBar} from './components/NavBar'
-import {Home} from './pages/Home'
-import {About} from './pages/About'
-import {Contact} from './pages/Contact'
+import {AllProducts} from './pages/AllProducts'
+import {Electronics} from './pages/Electronics'
+import {Jewelery} from './pages/Jewelery'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NewFooter } from './components/Footer'
@@ -15,9 +15,10 @@ function App() {
         <div>
           <NavBar/>
             <Routes>
-              <Route path='/' element={<Home/>}/>
-              <Route path='/about' element={<About/>}/>
-              <Route path='/contact' element={<Contact/>}/>
+              <Route path='/' element={<AllProducts/>}/>
+              <Route path='/electronics' element={<Electronics/>}/>
+              <Route path='/jewelery' element={<Jewelery/>}/>
+              {/* <Route path='/admin' element={<Admin/>}/> */}
             </Routes>
         </div>
       </Router>
