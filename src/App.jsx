@@ -5,7 +5,7 @@ import {Jewelery} from './pages/Jewelery'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NewFooter } from './components/Footer'
-import { useState, useEffect } from 'react'
+import { ShoppingCart } from './pages/ShoppingCart'
 
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
               <Route path='/' element={<AllProducts/>}/>
               <Route path='/electronics' element={<Electronics/>}/>
               <Route path='/jewelery' element={<Jewelery/>}/>
+              <Route path='/shoppingCart' element={<ShoppingCart/>}/>
               {/* <Route path='/admin' element={<Admin/>}/> */}
             </Routes>
         </div>

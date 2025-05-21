@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-export const Cards = ({children, title, description, image, key}) => {
+export const Cards = ({children, title, description, image, key, click, item, data}) => {
     return (
         <Card key={key} style={{ width: '20rem', padding: '10px', height: '100%' }}>
             <Card.Img variant="top" src={image} class='rounded mx-auto d-block' style={{objectFit: 'Contain', width: '15rem', height: '15rem'}}/>
@@ -16,7 +16,7 @@ export const Cards = ({children, title, description, image, key}) => {
                         $ {children}
                     </strong>
                 </p>
-            <Button variant="primary">Add to cart</Button>
+            <Button variant="primary" onClick={() => click(item, data)} >Add to cart</Button>
             </div>
             </Card.Body>
         </Card>
