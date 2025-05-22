@@ -5,17 +5,17 @@ export const NavBar = () => {
     return(
         <Navbar bg="dark" variant="dark underline" expand="lg" className="justify-content-between">
             <Container className='d-flex justify-content-between'>
-                <div class='d-flex align-items-center'>
+                <div className='d-flex align-items-center'>
                     <img
                         alt="Logo"
                         src="https://png.pngtree.com/png-clipart/20210310/original/pngtree-mascot-logo-red-bird-transparent-background-png-image_5949929.jpg"
                         width="40"
                         height="40"
-                        class="d-inline-block align-top me-3 border-0 border-secondary rounded-circle"
+                        className="d-inline-block align-top me-3 border-0 border-secondary rounded-circle"
                     />
                     <Navbar.Brand as={Link} to="/">Aguizon</Navbar.Brand>
                 </div>
-                <div class='d-flex align-items-center'>
+                <div className='d-flex align-items-center'>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto" variant='underline'>

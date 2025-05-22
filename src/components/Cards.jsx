@@ -1,22 +1,22 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-export const Cards = ({children, title, description, image, key, click, item, data}) => {
+export const Cards = ({children, title, description, image, click, botonText}) => {
     return (
-        <Card key={key} style={{ width: '20rem', padding: '10px', height: '100%' }}>
-            <Card.Img variant="top" src={image} class='rounded mx-auto d-block' style={{objectFit: 'Contain', width: '15rem', height: '15rem'}}/>
+        <Card style={{ width: '20rem', padding: '10px', height: '100%' }}>
+            <Card.Img variant="top" src={image} className='rounded mx-auto d-block' style={{objectFit: 'Contain', width: '15rem', height: '15rem'}}/>
             <Card.Body>
             <Card.Title>{title}</Card.Title>
             <Card.Text>
                 {description}
             </Card.Text>
-            <div class='d-flex justify-content-between align-items-center'>
+            <div className='d-flex justify-content-between align-items-center'>
                 <p>
                     <strong>
                         $ {children}
                     </strong>
                 </p>
-            <Button variant="primary" onClick={() => click(item, data)} >Add to cart</Button>
+            <Button variant="primary" onClick={click} >{botonText}</Button>
             </div>
             </Card.Body>
         </Card>
