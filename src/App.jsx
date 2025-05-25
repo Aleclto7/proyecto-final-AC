@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NewFooter } from './components/Footer'
 import { ShoppingCart } from './pages/ShoppingCart'
+import { Login } from './pages/Login'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
               <Route path='/' element={<AllProducts/>}/>
               <Route path='/electronics' element={<Electronics/>}/>
               <Route path='/jewelery' element={<Jewelery/>}/>
+              <Route path='/login' element={<Login/>}/>
               <Route path='/shoppingCart' element={<ShoppingCart/>}/>
               {/* <Route path='/admin' element={<Admin/>}/> */}
             </Routes>

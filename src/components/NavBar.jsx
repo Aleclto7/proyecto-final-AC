@@ -22,7 +22,7 @@ export const NavBar = () => {
                             <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/">AllProducts</Nav.Link>
                             <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/electronics">Electronics</Nav.Link>
                             <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/jewelery">Jewelery</Nav.Link>
-                            <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/admin">Admin</Nav.Link>
+                            <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/login">Login</Nav.Link>
                             <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/ShoppingCart">
                                 <img 
                                     src="https://images.icon-icons.com/2785/PNG/512/trolley_cart_icon_177366.png" 

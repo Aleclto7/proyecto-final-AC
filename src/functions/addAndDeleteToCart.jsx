@@ -4,39 +4,48 @@ const CartContext = createContext()
 
 export const CartProvider = ({children}) => {
     const [cart, setCart] = useState([])
-
+    console.log(cart);
+    
     const addToCart = (product) => {
-        if (!cart.find(item => item.id === product.id)) {
-            setCart([...cart, product])
-        }
+        const existingProduct = cart.find(item => item.id === product.id)
+        if(existingProduct) {
+            const updatedCart = cart.map(item => {
+                item.id === product.id
+                ? {...item, quantity: item.quantity + 1}
+                : item
+            })
+            setCart(updatedCart)
+        } else setCart([...cart, {...product, quantity: 1}])
     }
 
     const removeFromCart = (productId) => {
         setCart(cart.filter(item => item.id !== productId))
     }
+
+    const decreseQuantity = (productId) => {
+        const updatedCart = cart.map(item => {
+            if (item.id === productId)
+                if (item.quantity > 1) 
+                    return {...item, quantity: item.quantity - 1}
+                else return null
+            else return item
+        }).filter(Boolean)
+        setCart(updatedCart)
+    }
+    const increaseQuantity = (productId) => {
+        const updatedCart = cart.map(item => {
+            if (item.id === productId)
+                return {...item, quantity: item.quantity + 1}
+            else return item
+        })
+        setCart(updatedCart)
+    }
+
     return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, decreseQuantity, increaseQuantity }}>
         {children}
     </CartContext.Provider>
 )
 }
 
 export const useCart = () => useContext(CartContext)
-
-
-// export function addToCart(product, data) { 
-//     const [cart, setCart] = useState([])
-
-//     const actualProduct = data.find(item => item.id === product.id)
-//     if (!cart.find(item => item.id === actualProduct.id)) {
-//     setCart(actualProduct)
-//     }
-//     console.log(cart);
-// }
-
-// export function deleteToCart(product, data) { 
-//     setCart(cart.filter(item => item.id !== product.id))
-// }
-// export const productShoppingCart = addToCart(cart)
-// console.log(productShoppingCart);
-

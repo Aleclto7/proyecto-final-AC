@@ -3,10 +3,10 @@ import { Cards } from '../components/Cards'
 import { useCart } from '../functions/addAndDeleteToCart';
 
 export const ShoppingCart = () => {
-    const { cart, removeFromCart } = useCart();
-
+    const { cart, removeFromCart, decreseQuantity, increaseQuantity } = useCart();
+    
     return (
-        <Container className='mt-4'>
+        <Container className='mt-4 min-vh-100'>
             <h1 >Shopping Cart</h1>
             {
                 cart.length === 0 ? (
@@ -15,12 +15,24 @@ export const ShoppingCart = () => {
                     <div>
                         {cart.map((item, index) => (
                             <Cards
+                            width='100%'
+                            generalClassName='d-flex flex-row align-items-center gap-3 mb-3'
+                            priceContentClassName='d-flex justify-content-between align-items-center w-100 my-1'
+
+
                             key={index}
+                            image={item.image}
                             title={item.title}
                             description={item.description}
-                            image={item.image}
                             click={() => removeFromCart(item.id)}
-                            botonText={'Remove from Cart'}
+                            buttonText={'Remove from Cart'}
+                            display='d-block'
+                            click2={() => decreseQuantity(item.id)}
+                            bAddQuantity={'-'}
+                            itemQuantity={` ${item.quantity} `}
+                            click3={() => increaseQuantity(item.id)}
+                            bDecreseQuantity={'+'}
+
                             >
                                 {item.price}
                             </Cards>

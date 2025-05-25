@@ -1,8 +1,8 @@
 
 const infoFooter = [
-    '© 2025 Todo por 2 pesos',
-    'Desarrollado por Alexis Calixto',
-    'Contacto: alexiscfx1@gmail.com',
+    '© Aguizon',
+    'Developed by Alexis Calixto',
+    'Contact: alexiscfx1@gmail.com',
 ]
 export const NewFooter =({instagram, twitter})=>{
     return(
@@ -18,10 +18,10 @@ export const NewFooter =({instagram, twitter})=>{
             className='d-flex justify-content-center align-items-center bg-dark text-light' 
             style={{height: '50px'}}
             >
-                <p className='m-0'> Redes Sociales:  
-                <a href={instagram}>Instagram </a> 
+                <p className='m-0'> {`Social Media: `}  
+                <a style={{textDecoration:'none'}} href={instagram}>Instagram </a> 
                 - 
-                <a href={twitter}> Twitter</a>
+                <a style={{textDecoration:'none'}} href={twitter}> Twitter</a>
                 </p>
             </div>
         </>

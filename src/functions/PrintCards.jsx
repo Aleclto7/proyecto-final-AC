@@ -14,7 +14,7 @@ export const PrintCards = ({category, page,}) => {
         : data;
 
     return (
-        <Container className='mt-4'>
+        <Container className='mt-4 min-vh-100'>
             <h1>{page}</h1>
             <div className='mt-5 mb-5' style={{display: 'grid', justifyItems: 'center',gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gridTemplateRows: 'repeat(auto)', gap: '20px 20px'}}>
                 {productsToShow.map((item, index) => (
@@ -23,8 +23,9 @@ export const PrintCards = ({category, page,}) => {
                     title={item.title}
                     description={item.description}
                     image={item.image}
+                    primaryDisplay='d-block mt-2'
                     click={() => addToCart(item)}
-                    botonText={'Add to Cart'}
+                    buttonText={'Add to Cart'}
                     >
                         {item.price}
                     </Cards>
