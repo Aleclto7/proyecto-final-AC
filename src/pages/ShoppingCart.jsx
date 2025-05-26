@@ -4,10 +4,11 @@ import { useCart } from '../functions/addAndDeleteToCart';
 
 export const ShoppingCart = () => {
     const { cart, removeFromCart, decreseQuantity, increaseQuantity } = useCart();
-    
+
     return (
-        <Container className='mt-4 min-vh-100'>
-            <h1 >Shopping Cart</h1>
+        <Container className='min-vh-100 d-flex flex-column align-items-center'>
+            <h1 className='my-4'>Shopping Cart</h1>
+
             {
                 cart.length === 0 ? (
                     <h4>El carrito está vacío</h4>

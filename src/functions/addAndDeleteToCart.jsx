@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2'
 import { createContext, useContext, useState } from 'react'
 
 const CartContext = createContext()
@@ -6,16 +7,31 @@ export const CartProvider = ({children}) => {
     const [cart, setCart] = useState([])
     console.log(cart);
     
-    const addToCart = (product) => {
+    const addToCart = (product) => {    
         const existingProduct = cart.find(item => item.id === product.id)
+
         if(existingProduct) {
-            const updatedCart = cart.map(item => {
+            const updatedCart = cart.map(item =>
                 item.id === product.id
                 ? {...item, quantity: item.quantity + 1}
                 : item
-            })
+            )
             setCart(updatedCart)
         } else setCart([...cart, {...product, quantity: 1}])
+
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "The product was successfully added.",
+            showConfirmButton: false,
+            timer: 700,
+            backdrop: `
+            rgba(0, 0, 0, 0.4)
+            url("/images/nyan-cat.gif")
+            left top
+            no-repeat
+            `
+        });
     }
 
     const removeFromCart = (productId) => {
