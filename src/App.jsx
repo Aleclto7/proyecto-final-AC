@@ -7,6 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { NewFooter } from './components/Footer'
 import { ShoppingCart } from './pages/ShoppingCart'
 import { Login } from './pages/Login'
+import { Profile } from './pages/Profile'
+import ProtectedRoutes from './functions/ProtectedRoutes'
+import { Admin } from './pages/Admin'
 
 
 function App() {
@@ -19,8 +22,18 @@ function App() {
               <Route path='/' element={<AllProducts/>}/>
               <Route path='/electronics' element={<Electronics/>}/>
               <Route path='/jewelery' element={<Jewelery/>}/>
-              <Route path='/login' element={<Login/>}/>
               <Route path='/shoppingCart' element={<ShoppingCart/>}/>
+              <Route path='/login' element={<Login/>}/>
+              <Route path='/profile/:id' element={
+                <ProtectedRoutes>
+                  <Profile/>
+                </ProtectedRoutes>
+                }/>
+              <Route path='/admin' element={
+                <ProtectedRoutes>
+                  <Admin/>
+                </ProtectedRoutes>
+                }/>
               {/* <Route path='/admin' element={<Admin/>}/> */}
             </Routes>
         </div>

@@ -20,7 +20,6 @@ export const ShoppingCart = () => {
                             generalClassName='d-flex flex-row align-items-center gap-3 mb-3'
                             priceContentClassName='d-flex justify-content-between align-items-center w-100 my-1'
 
-
                             key={index}
                             image={item.image}
                             title={item.title}
@@ -33,7 +32,6 @@ export const ShoppingCart = () => {
                             itemQuantity={` ${item.quantity} `}
                             click3={() => increaseQuantity(item.id)}
                             bDecreseQuantity={'+'}
-
                             >
                                 {item.price}
                             </Cards>

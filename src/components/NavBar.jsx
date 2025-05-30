@@ -1,7 +1,18 @@
 import {Navbar, Nav, Container} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const NavBar = () => {
+    const navigate = useNavigate();
+    const isAuth = localStorage.getItem('auth') === 'true'
+
+    const closeSession = () => {
+        localStorage.removeItem('auth');
+        navigate('/login');
+    }
+
+
+
     return(
         <Navbar bg="dark" variant="dark underline" expand="lg" className="justify-content-between">
             <Container className='d-flex justify-content-between'>
@@ -18,18 +29,32 @@ export const NavBar = () => {
                 <div className='d-flex align-items-center'>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto" variant='underline'>
+                        <Nav className="" variant='underline'>
                             <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/">AllProducts</Nav.Link>
                             <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/electronics">Electronics</Nav.Link>
                             <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/jewelery">Jewelery</Nav.Link>
-                            <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/login">Login</Nav.Link>
+                            { isAuth && (
+                                <>
+                                    <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/profile/user123">Profile</Nav.Link>
+                                    <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/admin">Admin</Nav.Link>
+                                </>
+                            )}
+                            { !isAuth 
+                            ? (
+                                <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/login">Login</Nav.Link>
+                            )
+                            :
+                            (
+                                <button className='btn btn-outline-light' onClick={closeSession}>LogOut</button>
+                                // <Nav.Link style={{margin: 'auto', padding: '0px'}} onClick={cerrarSesion} >LogOut</Nav.Link>
+                            )}
                             <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/ShoppingCart">
-                                <img 
-                                    src="https://images.icon-icons.com/2785/PNG/512/trolley_cart_icon_177366.png" 
-                                    alt="Icono Carrito" 
-                                    width="35"
-                                    height="35"
-                                />
+                            <img 
+                                src="https://images.icon-icons.com/2785/PNG/512/trolley_cart_icon_177366.png" 
+                                alt="Icono Carrito" 
+                                width="35"
+                                height="35"
+                            />
                             </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>

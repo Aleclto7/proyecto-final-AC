@@ -1,7 +1,24 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-export const Cards = ({width='20rem', generalClassName, priceContentClassName='mt-3 w-100 ', image, title, description, children, primaryDisplay='d-none', click, buttonText, display='d-none', click2, bAddQuantity, itemQuantity, click3, bDecreseQuantity}) => {
+export const Cards = ({
+    width='20rem', 
+    generalClassName, 
+    priceContentClassName='mt-3 w-100 ', 
+    image, 
+    title, 
+    description, 
+    children, 
+    primaryDisplay='d-none', 
+    click, 
+    buttonText, 
+    display='d-none', 
+    click2, 
+    bAddQuantity, 
+    itemQuantity, 
+    click3, 
+    bDecreseQuantity,
+    }) => {
     return (
         <Card style={{ width: {width}, padding: '10px', height: '100%' }} className={generalClassName}>
             <Card.Img variant="top" src={image} className='rounded mx-auto d-block' style={{objectFit: 'Contain', width: '15rem', height: '15rem'}}/>
