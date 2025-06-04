@@ -3,9 +3,9 @@ import { createContext, useContext, useState } from 'react'
 
 const CartContext = createContext()
 
-export const CartProvider = ({children}) => {
+export const CartProvider = ({children}) => {   // El contexto creado aplicara a todos los hijos que envuelva CartProvier. Por lo que debemos envolver todo el proyecto en main.js
+
     const [cart, setCart] = useState([])
-    console.log(cart);
     
     const addToCart = (product) => {    
         const existingProduct = cart.find(item => item.id === product.id)
@@ -58,7 +58,9 @@ export const CartProvider = ({children}) => {
     }
 
     return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, decreseQuantity, increaseQuantity }}>
+    // CartContext.Provider permite que los componentes hijos accedan a los valores del contexto.
+    // value={{}} define los valores que estarán disponibles en el contexto.
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, decreseQuantity, increaseQuantity }}>   
         {children}
     </CartContext.Provider>
 )

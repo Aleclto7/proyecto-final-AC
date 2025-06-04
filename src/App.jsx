@@ -8,7 +8,7 @@ import { NewFooter } from './components/Footer'
 import { ShoppingCart } from './pages/ShoppingCart'
 import { Login } from './pages/Login'
 import { Profile } from './pages/Profile'
-import ProtectedRoutes from './functions/ProtectedRoutes'
+import {ProtectedRoutes} from './functions/ProtectedRoutes'
 import { Admin } from './pages/Admin'
 
 
@@ -24,7 +24,7 @@ function App() {
               <Route path='/jewelery' element={<Jewelery/>}/>
               <Route path='/shoppingCart' element={<ShoppingCart/>}/>
               <Route path='/login' element={<Login/>}/>
-              <Route path='/profile/:id' element={
+              <Route path='/profile' element={
                 <ProtectedRoutes>
                   <Profile/>
                 </ProtectedRoutes>

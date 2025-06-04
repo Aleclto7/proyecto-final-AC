@@ -21,7 +21,7 @@ export const PrintCards = ({category, page,}) => {
                     <Cards
                     key={index}
                     title={item.title}
-                    description={item.description}
+                    description={item.description.slice(0, 100)}
                     image={item.image}
                     primaryDisplay='d-block mt-2'
                     click={() => addToCart(item)}
