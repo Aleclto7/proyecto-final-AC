@@ -33,7 +33,7 @@ export const ShoppingCart = () => {
                             click3={() => increaseQuantity(item.id)}
                             bDecreseQuantity={'+'}
                             >
-                                {item.price}
+                                {Math.trunc(item.quantity * item.price)} $
                             </Cards>
                         ))}
                     </div>
