@@ -22,6 +22,9 @@ export const Admin = () => {
         if (!image.trim()){
             validationError.push('Image URL is required');
         }
+        if (!/^https?:\/\//i.test(image)) {
+            validationError.push('Image must be a valid URL');
+        }
         if (!name.trim()) {
             validationError.push('Name is required');
         }
@@ -33,6 +36,9 @@ export const Admin = () => {
         }
         if (isNaN(price)) {
             validationError.push('price must be a number');
+        }
+        if (price <= 0) {
+            validationError.push('price must be greater than 0');
         }
         setError(validationError)
         return validationError.length === 0;
@@ -91,8 +97,8 @@ export const Admin = () => {
     }
 
     return (
-        <Container className="min-vh-100 mt-4 ">
-            <h1 className="mb-2">Admin</h1>
+        <Container className="min-vh-100 mt-3 ">
+            <h1 className="mb-1">Admin</h1>
             {error.length > 0 && 
             <div className="alert alert-danger" role="alert">{
                 <ul>
@@ -104,8 +110,8 @@ export const Admin = () => {
             }</div>
             }
 
-            <p className="mb-4">Add new products</p>
-                <Form className="w-100 my-4" onSubmit={
+            <p className="mb-2">Add new products</p>
+                <Form className="w-100 mt-4" onSubmit={
                     editingProduct 
                     ?
                     productToEdit
@@ -113,22 +119,22 @@ export const Admin = () => {
                     addProduct
                     }>
                     <Form.Group className="mb-3 d-flex align-items-center justify-content-between" controlId="ProductImage">
-                        <Form.Label>Product Image</Form.Label>
+                        <Form.Label className="w-25">Product Image</Form.Label>
                         <Form.Control value={image} className="w-75" type="Text" placeholder="Enter image URL" onChange={(e)=> setImage(e.target.value)}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3 d-flex align-items-center justify-content-between" controlId="ProductName">
-                        <Form.Label>Product Name</Form.Label>
+                        <Form.Label className="w-25">Product Name</Form.Label>
                         <Form.Control value={name} className="w-75" type="Text" placeholder="Enter product name" onChange={(e)=> setName(e.target.value)}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3 d-flex align-items-center justify-content-between" controlId="ProductDescription">
-                        <Form.Label>Product Description</Form.Label>
+                        <Form.Label className="w-25">Product Description</Form.Label>
                         <Form.Control value={description} className="w-75" type="Text" placeholder="Enter product description" onChange={(e)=> setDescription(e.target.value)}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3 d-flex align-items-center justify-content-between" controlId="ProductPrice">
-                        <Form.Label>Product Price</Form.Label>
+                        <Form.Label className="w-25">Product Price</Form.Label>
                         <Form.Control value={price} className="w-75" type="Text" placeholder="Enter product price" onChange={(e)=> setPrice(e.target.value)}/>
                     </Form.Group> 
                         <Button variant="primary" type="submit">{
@@ -139,7 +145,7 @@ export const Admin = () => {
                             'Add Product'
                         }</Button>
                 </Form>
-                <h2 className="mb-4">Products</h2>
+                <h2 className="mt-5">Products</h2>
                 <AdminProductList products={products} editProduct={editProduct} deleteProducts={deleteProducts} />
         </Container>
     )

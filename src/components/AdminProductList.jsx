@@ -3,7 +3,7 @@ import { Table, Button } from 'react-bootstrap';
 export const AdminProductList = ({products, editProduct, deleteProducts}) => {
 
     return (
-        <Table striped>
+        <Table striped borderless className='h-100'>
             <thead>
                 <tr>
                 <th>ID</th>
@@ -20,9 +20,9 @@ export const AdminProductList = ({products, editProduct, deleteProducts}) => {
                         <td>{item.name}</td>
                         <td className="w-50">{item.description}</td>
                         <td>{item.price}</td>
-                        <td className="d-flex gap-3">
-                            <Button variant="warning" onClick={() => editProduct(item)}>Edit</Button>
-                            <Button variant="danger" onClick={() => deleteProducts(item)}>Delete</Button>
+                        <td className="d-flex gap-3 h-100 align-items-center">
+                            <Button className='h-75' variant="warning" onClick={() => editProduct(item)}>Edit</Button>
+                            <Button className='h-75' variant="danger" onClick={() => deleteProducts(item)}>Delete</Button>
                         </td>
                     </tr>
                 ))}
