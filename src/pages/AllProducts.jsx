@@ -1,4 +1,4 @@
-import { PrintCards } from '../functions/PrintCards';
+import { PrintCards } from '../functions/printCards';
 
 export const AllProducts = () => {
     

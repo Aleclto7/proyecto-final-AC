@@ -7,7 +7,7 @@ export const AdminProductList = ({products, editProduct, deleteProducts}) => {
             <thead>
                 <tr>
                 <th>ID</th>
-                <th>Name</th>
+                <th>Title</th>
                 <th>Descrition</th>
                 <th>Price</th>
                 <th>Actions</th>
@@ -17,7 +17,7 @@ export const AdminProductList = ({products, editProduct, deleteProducts}) => {
                 {products.map((item) => (
                     <tr key={item.id}>
                         <td>{item.id}</td>
-                        <td>{item.name}</td>
+                        <td>{item.title}</td>
                         <td className="w-50">{item.description}</td>
                         <td>{item.price}</td>
                         <td className="d-flex gap-3 h-100 align-items-center">

@@ -16,7 +16,7 @@ export const ShoppingCart = () => {
                     <div>
                         {cart.map((item, index) => (
                             <Cards
-                            width='100%'
+                            widthI='100%'
                             generalClassName='d-flex flex-row align-items-center gap-3 mb-3'
                             priceContentClassName='d-flex justify-content-between align-items-center w-100 my-1'
 

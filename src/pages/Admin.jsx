@@ -6,16 +6,15 @@ import { useLocalStorage } from "../functions/UseLocalStorage";
 export const Admin = () => {
     const [products, setProducts] = useLocalStorage('products', []);
 
-    const [count, setCount] = useState(1);
+    const [count, setCount] = useLocalStorage('count', 1);
     const [editingProduct, setEditingProduct] = useState(null);
 
     const [image, setImage] = useState("");
-    const [name, setName] = useState("");
+    const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
 
     const [error, setError] = useState([]);
-
 
     const validate = () => {
         const validationError = [];
@@ -25,8 +24,8 @@ export const Admin = () => {
         if (!/^https?:\/\//i.test(image)) {
             validationError.push('Image must be a valid URL');
         }
-        if (!name.trim()) {
-            validationError.push('Name is required');
+        if (!title.trim()) {
+            validationError.push('Title is required');
         }
         if (!description.trim()) {
             validationError.push('Description is required');
@@ -46,7 +45,7 @@ export const Admin = () => {
 
     const cleanInputs = () => {
         setImage("");
-        setName("");
+        setTitle("");
         setDescription("");
         setPrice("");
     }
@@ -59,7 +58,7 @@ export const Admin = () => {
             {
                 id: count,
                 image,
-                name,
+                title,
                 description,
                 price
             }
@@ -71,9 +70,9 @@ export const Admin = () => {
     const editProduct = (upgradedProduct) => {
         setEditingProduct(upgradedProduct);
         setImage(upgradedProduct.image);
-        setName(upgradedProduct.name);
-        setPrice(upgradedProduct.price);
+        setTitle(upgradedProduct.title);
         setDescription(upgradedProduct.description);
+        setPrice(upgradedProduct.price);
     }
     
     const productToEdit = (e) => {
@@ -82,7 +81,7 @@ export const Admin = () => {
 
         setProducts(products.map(p => 
             p.id === editingProduct.id 
-            ? {...p, image, name, price, description} 
+            ? {...p, image, title, description, price} 
             : p
         )) 
 
@@ -125,7 +124,7 @@ export const Admin = () => {
 
                     <Form.Group className="mb-3 d-flex align-items-center justify-content-between" controlId="ProductName">
                         <Form.Label className="w-25">Product Name</Form.Label>
-                        <Form.Control value={name} className="w-75" type="Text" placeholder="Enter product name" onChange={(e)=> setName(e.target.value)}/>
+                        <Form.Control value={title} className="w-75" type="Text" placeholder="Enter product title" onChange={(e)=> setTitle(e.target.value)}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3 d-flex align-items-center justify-content-between" controlId="ProductDescription">

@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 export const Cards = ({
-    width='20rem', 
+    widthI='20rem', 
     generalClassName, 
     priceContentClassName='mt-3 w-100 ', 
     image, 
@@ -20,7 +20,7 @@ export const Cards = ({
     bDecreseQuantity,
     }) => {
     return (
-        <Card style={{ width: {width}, padding: '10px', height: '100%' }} className={generalClassName}>
+        <Card style={{ width: widthI, padding: '10px', height: '100%' }} className={generalClassName}>
             <Card.Img variant="top" src={image} className='rounded mx-auto d-block' style={{objectFit: 'Contain', width: '15rem', height: '15rem'}}/>
             <Card.Body className='d-flex flex-column justify-content-between align-items-start'>
             <div>
