@@ -1,10 +1,21 @@
-import { Container, Button, Form, Table } from "react-bootstrap";
-import { useState } from "react";
+import { Container, Button, Form } from "react-bootstrap";
+import { useEffect, useState } from "react";
 import { AdminProductList } from "../components/AdminProductList";
-import { useLocalStorage } from "../functions/UseLocalStorage";
+import { useLocalStorage } from "../functions/useLocalStorage";
+import { useProductCRUD } from "../functions/useProductCRUD";
 
 export const Admin = () => {
-    const [products, setProducts] = useLocalStorage('products', []);
+    // const [products, setProducts] = useLocalStorage('products', []);
+    const [
+    data, 
+    loading, 
+    fecthData,
+    createProduct,
+    updateProduct,
+    deleteProduct,
+    ] = useProductCRUD()
+
+    const [products, setProducts] = useState([]);
 
     const [count, setCount] = useLocalStorage('count', 1);
     const [editingProduct, setEditingProduct] = useState(null);
@@ -12,9 +23,16 @@ export const Admin = () => {
     const [image, setImage] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [category, setCategory] = useState("");
     const [price, setPrice] = useState("");
 
     const [error, setError] = useState([]);
+
+    useEffect(() => {
+        if (data) {
+            setProducts(data)
+        }
+    },[data])
 
     const validate = () => {
         const validationError = [];
@@ -29,6 +47,9 @@ export const Admin = () => {
         }
         if (!description.trim()) {
             validationError.push('Description is required');
+        }
+        if (!category.trim()) {
+            validationError.push('Category is required');
         }
         if (!price.trim()) {
             validationError.push('Price is required');
@@ -47,6 +68,7 @@ export const Admin = () => {
         setImage("");
         setTitle("");
         setDescription("");
+        setCategory("");
         setPrice("");
     }
 
@@ -60,10 +82,11 @@ export const Admin = () => {
                 image,
                 title,
                 description,
+                category,
                 price
             }
         ])
-        setCount(count + 1)
+        setCount(prev => prev + 1)
         cleanInputs();
     }
 
@@ -72,6 +95,7 @@ export const Admin = () => {
         setImage(upgradedProduct.image);
         setTitle(upgradedProduct.title);
         setDescription(upgradedProduct.description);
+        setCategory(upgradedProduct.category);
         setPrice(upgradedProduct.price);
     }
     
@@ -81,7 +105,7 @@ export const Admin = () => {
 
         setProducts(products.map(p => 
             p.id === editingProduct.id 
-            ? {...p, image, title, description, price} 
+            ? {...p, image, title, description, category, price} 
             : p
         )) 
 
@@ -90,9 +114,7 @@ export const Admin = () => {
     }
 
     const deleteProducts = (item) => {
-        const newProducts = prev => prev.filter(prod => prod.id !== item.id);
-        
-        setProducts(newProducts);
+        setProducts(prev => prev.filter(prod => prod.id !== item.id));
     }
 
     return (
@@ -130,6 +152,11 @@ export const Admin = () => {
                     <Form.Group className="mb-3 d-flex align-items-center justify-content-between" controlId="ProductDescription">
                         <Form.Label className="w-25">Product Description</Form.Label>
                         <Form.Control value={description} className="w-75" type="Text" placeholder="Enter product description" onChange={(e)=> setDescription(e.target.value)}/>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3 d-flex align-items-center justify-content-between" controlId="ProductCategory">
+                        <Form.Label className="w-25">Product Category</Form.Label>
+                        <Form.Control value={category} className="w-75" type="Text" placeholder="Enter product category" onChange={(e)=> setCategory(e.target.value)}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3 d-flex align-items-center justify-content-between" controlId="ProductPrice">

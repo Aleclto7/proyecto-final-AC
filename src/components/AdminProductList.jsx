@@ -9,6 +9,7 @@ export const AdminProductList = ({products, editProduct, deleteProducts}) => {
                 <th>ID</th>
                 <th>Title</th>
                 <th>Descrition</th>
+                <th>Category</th>
                 <th>Price</th>
                 <th>Actions</th>
                 </tr>
@@ -19,6 +20,7 @@ export const AdminProductList = ({products, editProduct, deleteProducts}) => {
                         <td>{item.id}</td>
                         <td>{item.title}</td>
                         <td className="w-50">{item.description}</td>
+                        <td>{item.category}</td>
                         <td>{item.price}</td>
                         <td className="d-flex gap-3 h-100 align-items-center">
                             <Button className='h-75' variant="warning" onClick={() => editProduct(item)}>Edit</Button>

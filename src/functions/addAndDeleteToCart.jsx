@@ -24,7 +24,7 @@ export const CartProvider = ({children}) => {   // El contexto creado aplicara a
             icon: "success",
             title: "The product was successfully added.",
             showConfirmButton: false,
-            timer: 700,
+            timer: 900,
             backdrop: `
             rgba(0, 0, 0, 0.4)
             url("/images/nyan-cat.gif")

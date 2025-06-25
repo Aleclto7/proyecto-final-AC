@@ -7,7 +7,8 @@ export const Cards = ({
     priceContentClassName='mt-3 w-100 ', 
     image, 
     title, 
-    description, 
+    description,
+    category, 
     children, 
     primaryDisplay='d-none', 
     click, 
@@ -28,6 +29,9 @@ export const Cards = ({
                 <Card.Text>
                     {description}
                 </Card.Text>
+                <p className='secondary'>
+                    {category}
+                </p>
             </div>
             <div className={priceContentClassName}>
                 <p className='my-auto'>
