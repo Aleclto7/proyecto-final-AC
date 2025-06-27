@@ -10,7 +10,7 @@ const [
     fetchError,
     createProduct,
     updateProduct,
-    deleteProducts,
+    deleteProduct,
     ] = useProductCRUD();
     
     const [products, setProducts] = useState([]);
@@ -171,7 +171,7 @@ const [
                         }</Button>
                 </Form>
                 <h2 className="mt-5">Products</h2>
-                <AdminProductList products={products} editProduct={editProduct} deleteProducts={deleteProducts} />
+                <AdminProductList products={products} editProduct={editProduct} deleteProduct={deleteProduct} />
         </Container>
     )
 }
