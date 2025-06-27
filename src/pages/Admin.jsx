@@ -1,24 +1,28 @@
 import { Container, Button, Form } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { AdminProductList } from "../components/AdminProductList";
-import { useLocalStorage } from "../functions/useLocalStorage";
 import { useProductCRUD } from "../functions/useProductCRUD";
 
 export const Admin = () => {
-    // const [products, setProducts] = useLocalStorage('products', []);
-    const [
+const [
     data, 
     loading, 
-    fecthData,
+    fetchError,
     createProduct,
     updateProduct,
-    deleteProduct,
-    ] = useProductCRUD()
-
+    deleteProducts,
+    ] = useProductCRUD();
+    
     const [products, setProducts] = useState([]);
 
-    const [count, setCount] = useLocalStorage('count', 1);
-    const [editingProduct, setEditingProduct] = useState(null);
+    useEffect(() => {
+        if (data) {
+            setProducts(data)
+        }
+    },[data])
+
+    const [productToEdit, setProductToEdit] = useState(null);
+    const [formError, setFormError] = useState([]);
 
     const [image, setImage] = useState("");
     const [title, setTitle] = useState("");
@@ -26,13 +30,9 @@ export const Admin = () => {
     const [category, setCategory] = useState("");
     const [price, setPrice] = useState("");
 
-    const [error, setError] = useState([]);
+    const [currentProduct, setCurrentProducts] = useState(null)
 
-    useEffect(() => {
-        if (data) {
-            setProducts(data)
-        }
-    },[data])
+    
 
     const validate = () => {
         const validationError = [];
@@ -60,7 +60,7 @@ export const Admin = () => {
         if (price <= 0) {
             validationError.push('price must be greater than 0');
         }
-        setError(validationError)
+        setFormError(validationError)
         return validationError.length === 0;
     }
 
@@ -75,23 +75,21 @@ export const Admin = () => {
     const addProduct = (e) => {
         e.preventDefault();
         if (!validate()) return;
-        setProducts([
-            ...products,
-            {
-                id: count,
+        const newProduct = {
                 image,
                 title,
                 description,
                 category,
-                price
-            }
-        ])
-        setCount(prev => prev + 1)
+                price,
+        };
+        
+        createProduct(newProduct)
+        
         cleanInputs();
     }
 
     const editProduct = (upgradedProduct) => {
-        setEditingProduct(upgradedProduct);
+        setProductToEdit(upgradedProduct);
         setImage(upgradedProduct.image);
         setTitle(upgradedProduct.title);
         setDescription(upgradedProduct.description);
@@ -99,32 +97,33 @@ export const Admin = () => {
         setPrice(upgradedProduct.price);
     }
     
-    const productToEdit = (e) => {
+    const productEdition = (e) => {
         e.preventDefault();
         if (!validate()) return;
 
-        setProducts(products.map(p => 
-            p.id === editingProduct.id 
-            ? {...p, image, title, description, category, price} 
-            : p
-        )) 
+        const productToSend = {
+                image,
+                title,
+                description,
+                category,
+                price,
+                id: productToEdit.id
+        }
+        
+        updateProduct(productToSend)
 
-        setEditingProduct(null)
+        setProductToEdit(null)
         cleanInputs();
-    }
-
-    const deleteProducts = (item) => {
-        setProducts(prev => prev.filter(prod => prod.id !== item.id));
     }
 
     return (
         <Container className="min-vh-100 mt-3 ">
             <h1 className="mb-1">Admin</h1>
-            {error.length > 0 && 
+            {formError.length > 0 && 
             <div className="alert alert-danger" role="alert">{
                 <ul>
-                    {error.length > 0 
-                    && error.map ((err, i) => 
+                    {formError.length > 0 
+                    && formError.map ((err, i) => 
                         <li key={i}>{err}</li>
                     )}
                 </ul>
@@ -133,9 +132,9 @@ export const Admin = () => {
 
             <p className="mb-2">Add new products</p>
                 <Form className="w-100 mt-4" onSubmit={
-                    editingProduct 
+                    productToEdit 
                     ?
-                    productToEdit
+                    productEdition
                     :                    
                     addProduct
                     }>
@@ -164,7 +163,7 @@ export const Admin = () => {
                         <Form.Control value={price} className="w-75" type="Text" placeholder="Enter product price" onChange={(e)=> setPrice(e.target.value)}/>
                     </Form.Group> 
                         <Button variant="primary" type="submit">{
-                            editingProduct
+                            productToEdit
                             ?
                             'Upgrade Product'
                             :

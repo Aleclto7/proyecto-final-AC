@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react"
 
-const API_URL = 'https://68548f936a6ef0ed662f697a.mockapi.io/products'
 
 export const useProductCRUD = () => {
+    const API_URL ='https://68548f936a6ef0ed662f697a.mockapi.io/products'
+
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const [fetchError, setFetchError] = useState(null)
 
-    const fecthData = async () => {
+    const fetchData = async () => {
         setLoading(true)
         try {
             const res = await fetch(API_URL)
@@ -17,7 +18,7 @@ export const useProductCRUD = () => {
         }
         catch(err) {
             console.log('An error occurred', err);
-            setError(err.message)
+            setFetchError(err.message)
         }
         finally{
             setLoading(false)
@@ -25,38 +26,42 @@ export const useProductCRUD = () => {
     }
 
     useEffect(() => {
-    fecthData();
+    fetchData();
     }, []);
 
-
-    const createProduct = async () => {
+    const createProduct = async (product) => {
         try {
-            const res = await fetch (API_URL,
+            const res = await fetch(API_URL,
                 {
                     method:'POST',
-                    headers: {'Content-Type':'aplication/json'},
-                    body: JSON.stringify(currentItem),
+                    headers: {'Content-Type':'application/json'},
+                    body: JSON.stringify(product),
                 }
             )
             if(!res.ok) throw new Error('Error creating item')
-            await fecthData()
+
+            const data = await res.json();
+            console.log('Producto creado en MockAPI:', data);
+            await fetchData()
         } 
         catch (error) {
+            console.error('Error detectado en catch:', error);
             alert('Error creating item');
             console.log(error);
         }
     }
-    const updateProduct = async () => {
+
+    const updateProduct = async (currentItem) => {
         try {
             const res = await fetch (`${API_URL}/${currentItem.id}`,
                 {
                     method:'PUT',
-                    headers: {'Content-Type':'aplication/json'},
+                    headers: {'Content-Type':'application/json'},
                     body: JSON.stringify(currentItem),
                 }
             )
             if(!res.ok) throw new Error('Error update item')
-            await fecthData()
+            await fetchData()
         } 
         catch (error) {
             alert('Error update item');
@@ -66,9 +71,9 @@ export const useProductCRUD = () => {
     const deleteProduct = async (id) => {
         if(window.confirm('Are you sure you want to delete this item?')){
             try {
-                const res = await fetch (`${API_URL}/${currentItem.id}`, {method:'DELETE',})
+                const res = await fetch (`${API_URL}/${id}`, {method:'DELETE',})
                 if(!res.ok) throw new Error('Error delete item')
-                await fecthData()
+                await fetchData()
             } 
             catch (error) {
                 alert('Error delete item');
@@ -80,27 +85,9 @@ export const useProductCRUD = () => {
     return [
         data, 
         loading, 
-        error,
-        fecthData,
+        fetchError,
         createProduct,
         updateProduct,
         deleteProduct,
     ]
 }
-
-/* useEffect(() => {
-    fetch(url)
-        .then(res => res.json())
-        .then(json => {
-            setData(json)
-            setLoading(false)
-    })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            setLoading(false);
-    })
-    }, [url]);   
-
-    return [data, loading]
-    
-} */

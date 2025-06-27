@@ -7,9 +7,9 @@ import { useEffect } from "react";
 export const PrintCards = ({category, page}) => {
     const { addToCart } = useCart();
 
-    const [data, loading, error] = useProductCRUD();
+    const [data, loading, fetchError] = useProductCRUD();
 
-    if (error) return  <p>{error}</p>
+    if (fetchError) return  <p>{fetchError}</p>
     if (loading) return <p>Cargando Productos...</p>
     
     const productsToShow = category

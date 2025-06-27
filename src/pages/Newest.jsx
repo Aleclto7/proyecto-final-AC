@@ -3,17 +3,16 @@ import { Cards } from "../components/Cards";
 import { useCart } from "../functions/addAndDeleteToCart";
 
 export const Newest = () => {
-    let localProducts;
     const getLocalStorage = window.localStorage.getItem('products');
 
+    let localProducts = !getLocalStorage || getLocalStorage === 'undefined' || getLocalStorage === undefined 
+    ?
+    []
+    :
+    JSON.parse(getLocalStorage)
+    
     const { addToCart } = useCart();
     
-    if (!getLocalStorage|| getLocalStorage === 'undefined' || getLocalStorage === undefined) {
-        localProducts = [];
-    } else {
-        localProducts = JSON.parse(getLocalStorage);
-    }
-
     return (
         <Container className="min-vh-100 mt-4">
             <h1>Newest</h1>

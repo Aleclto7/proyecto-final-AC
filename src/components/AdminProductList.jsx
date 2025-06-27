@@ -24,7 +24,7 @@ export const AdminProductList = ({products, editProduct, deleteProducts}) => {
                         <td>{item.price}</td>
                         <td className="d-flex gap-3 h-100 align-items-center">
                             <Button className='h-75' variant="warning" onClick={() => editProduct(item)}>Edit</Button>
-                            <Button className='h-75' variant="danger" onClick={() => deleteProducts(item)}>Delete</Button>
+                            <Button className='h-75' variant="danger" onClick={() => deleteProducts(item.id)}>Delete</Button>
                         </td>
                     </tr>
                 ))}
