@@ -4,23 +4,16 @@ import { AdminProductList } from "../components/AdminProductList";
 import { useProductCRUD } from "../functions/useProductCRUD";
 
 export const Admin = () => {
-const [
-    data, 
-    loading, 
-    fetchError,
-    createProduct,
-    updateProduct,
-    deleteProduct,
+    const [
+        data, 
+        loading, 
+        fetchError,
+        createProduct,
+        updateProduct,
+        deleteProduct,
     ] = useProductCRUD();
     
     const [products, setProducts] = useState([]);
-
-    useEffect(() => {
-        if (data) {
-            setProducts(data)
-        }
-    },[data])
-
     const [productToEdit, setProductToEdit] = useState(null);
     const [formError, setFormError] = useState([]);
 
@@ -30,10 +23,12 @@ const [
     const [category, setCategory] = useState("");
     const [price, setPrice] = useState("");
 
-    const [currentProduct, setCurrentProducts] = useState(null)
-
+    useEffect(() => {
+        if (data) {
+            setProducts(data)
+        }
+    },[data])
     
-
     const validate = () => {
         const validationError = [];
         if (!image.trim()){
