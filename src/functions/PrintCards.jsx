@@ -15,8 +15,6 @@ export const PrintCards = ({category, page}) => {
     const productsToShow = category
         ? data.filter(item => item.category === category)
         : data;
-        console.log(productsToShow);
-        
 
     return (
         <Container className='mt-4 min-vh-100'>
@@ -24,6 +22,7 @@ export const PrintCards = ({category, page}) => {
             <div className='mt-5 mb-5' style={{display: 'grid', justifyItems: 'center',gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gridTemplateRows: 'repeat(auto)', gap: '20px 20px'}}>
                 {productsToShow.map((item, index) => (
                     <Cards
+                    generalClassName='bg-light shadow-lg p-3 mb-5 rounded'
                     key={index}
                     title={item.title}
                     description={item.description.slice(0, 100)}

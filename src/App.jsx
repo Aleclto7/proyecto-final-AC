@@ -10,20 +10,18 @@ import { Login } from './pages/Login'
 import { Profile } from './pages/Profile'
 import {ProtectedRoutes} from './functions/ProtectedRoutes'
 import { Admin } from './pages/Admin'
-import { Newest } from './pages/Newest'
 
 
 function App() {
   return (
     <>
       <Router>
-        <div>
+        <div style={{minWidth: '600px'}}>
           <NavBar/>
             <Routes>
               <Route path='/' element={<AllProducts/>}/>
               <Route path='/electronics' element={<Electronics/>}/>
               <Route path='/jewelery' element={<Jewelery/>}/>
-              <Route path='/newest' element={<Newest/>}/>
               <Route path='/shoppingCart' element={<ShoppingCart/>}/>
               <Route path='/login' element={<Login/>}/>
               <Route path='/profile' element={
@@ -41,7 +39,7 @@ function App() {
         </div>
       </Router>
 
-      <footer>
+      <footer style={{minWidth: '600px'}}>
         <NewFooter 
         instagram={'https:instagram.com'}
         twitter={'https:twitter.com'}

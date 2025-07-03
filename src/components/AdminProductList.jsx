@@ -1,6 +1,6 @@
 import { Table, Button } from 'react-bootstrap';
 
-export const AdminProductList = ({products, editProduct, deleteProduct}) => {
+export const AdminProductList = ({products, editProduct, deletingProduct}) => {
 
     return (
         <Table striped borderless className='h-100'>
@@ -18,13 +18,13 @@ export const AdminProductList = ({products, editProduct, deleteProduct}) => {
                 {products.map((item) => (
                     <tr key={item.id}>
                         <td>{item.id}</td>
-                        <td>{item.title}</td>
-                        <td className="w-50">{item.description}</td>
+                        <td>{item.title.slice(0,15)}</td>
+                        <td className="w-50">{item.description.slice(0,25)}</td>
                         <td>{item.category}</td>
                         <td>{item.price}</td>
                         <td className="d-flex gap-3 h-100 align-items-center">
-                            <Button className='h-75' variant="warning" onClick={() => editProduct(item)}>Edit</Button>
-                            <Button className='h-75' variant="danger" onClick={() => deleteProduct(item.id)}>Delete</Button>
+                            <Button className='h-100px w-50px' variant="warning" onClick={() => editProduct(item)}>Edit</Button>
+                            <Button className='h-100px w-50px' variant="danger" onClick={() => deletingProduct(item.id)}>Delete</Button>
                         </td>
                     </tr>
                 ))}

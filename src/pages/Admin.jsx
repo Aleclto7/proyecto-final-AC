@@ -2,8 +2,13 @@ import { Container, Button, Form } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { AdminProductList } from "../components/AdminProductList";
 import { useProductCRUD } from "../functions/useProductCRUD";
+import { useCart } from '../functions/addAndDeleteToCart';
+
+import Swal from 'sweetalert2'
 
 export const Admin = () => {
+    const { swallAlert } = useCart();
+
     const [
         data, 
         loading, 
@@ -81,6 +86,8 @@ export const Admin = () => {
         createProduct(newProduct)
         
         cleanInputs();
+
+        swallAlert("The product was successfully added.")
     }
 
     const editProduct = (upgradedProduct) => {
@@ -109,6 +116,12 @@ export const Admin = () => {
 
         setProductToEdit(null)
         cleanInputs();
+
+        swallAlert("The product was successfully edited.")
+    }
+    const deletingProduct = (id) => {
+        deleteProduct(id)
+        swallAlert("The product was successfully disposed of.")
     }
 
     return (
@@ -166,7 +179,7 @@ export const Admin = () => {
                         }</Button>
                 </Form>
                 <h2 className="mt-5">Products</h2>
-                <AdminProductList products={products} editProduct={editProduct} deleteProduct={deleteProduct} />
+                <AdminProductList products={products} editProduct={editProduct} deletingProduct={deletingProduct} />
         </Container>
     )
 }

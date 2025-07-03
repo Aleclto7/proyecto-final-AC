@@ -6,6 +6,29 @@ const CartContext = createContext()
 export const CartProvider = ({children}) => {   // El contexto creado aplicara a todos los hijos que envuelva CartProvier. Por lo que debemos envolver todo el proyecto en main.js
 
     const [cart, setCart] = useState([])
+
+    const swallAlert = (message) => {
+/*      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: message,
+        showConfirmButton: false,
+        timer: 900,
+        backdrop: `
+        timer: 900,
+        rgba(0, 0, 0, 0.4)
+        url("/images/nyan-cat.gif")
+        left top
+        no-repeat
+        `
+    }); */
+        Swal.fire({
+        icon: "success",
+        title: message,
+        timer: 1000,
+        showConfirmButton: false
+        });
+    }
     
     const addToCart = (product) => {    
         const existingProduct = cart.find(item => item.id === product.id)
@@ -19,19 +42,8 @@ export const CartProvider = ({children}) => {   // El contexto creado aplicara a
             setCart(updatedCart)
         } else setCart([...cart, {...product, quantity: 1}])
 
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "The product was successfully added.",
-            showConfirmButton: false,
-            timer: 900,
-            backdrop: `
-            rgba(0, 0, 0, 0.4)
-            url("/images/nyan-cat.gif")
-            left top
-            no-repeat
-            `
-        });
+        swallAlert("The product was successfully added.")
+
     }
 
     const removeFromCart = (productId) => {
@@ -60,7 +72,7 @@ export const CartProvider = ({children}) => {   // El contexto creado aplicara a
     return (
     // CartContext.Provider permite que los componentes hijos accedan a los valores del contexto.
     // value={{}} define los valores que estarán disponibles en el contexto.
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, decreseQuantity, increaseQuantity }}>   
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, decreseQuantity, increaseQuantity, swallAlert }}>   
         {children}
     </CartContext.Provider>
 )

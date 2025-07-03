@@ -16,8 +16,8 @@ export const ShoppingCart = () => {
                     <div>
                         {cart.map((item, index) => (
                             <Cards
-                            widthI='100%'
-                            generalClassName='d-flex flex-row align-items-center gap-3 mb-3'
+                            widthI='90vw'
+                            generalClassName='d-flex flex-row align-items-center gap-3 mb-3 bg-light border-light shadow-lg p-3 mb-5 rounded'
                             priceContentClassName='d-flex justify-content-between align-items-center w-100 my-1'
 
                             key={index}
