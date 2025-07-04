@@ -1,15 +1,14 @@
 import { Table, Button } from 'react-bootstrap';
-
+import '../styles/style.css';
 export const AdminProductList = ({products, editProduct, deletingProduct}) => {
-
     return (
         <Table striped borderless className='h-100'>
             <thead>
                 <tr>
-                <th>ID</th>
+                <th className='itemAdminMQ'>ID</th>
                 <th>Title</th>
-                <th>Descrition</th>
-                <th>Category</th>
+                <th className='itemAdminMQ'>Descrition</th>
+                <th className='itemAdminMQ'>Category</th>
                 <th>Price</th>
                 <th>Actions</th>
                 </tr>
@@ -17,12 +16,12 @@ export const AdminProductList = ({products, editProduct, deletingProduct}) => {
             <tbody>
                 {products.map((item) => (
                     <tr key={item.id}>
-                        <td>{item.id}</td>
+                        <td className='itemAdminMQ'>{item.id}</td>
                         <td>{item.title.slice(0,15)}</td>
-                        <td className="w-50">{item.description.slice(0,25)}</td>
-                        <td>{item.category}</td>
+                        <td className="w-50 itemAdminMQ">{item.description.slice(0,25)}</td>
+                        <td className='itemAdminMQ'>{item.category}</td>
                         <td>{item.price}</td>
-                        <td className="d-flex gap-3 h-100 align-items-center">
+                        <td className="d-flex gap-1 h-100 align-items-center buttonsAdmin">
                             <Button className='h-100px w-50px' variant="warning" onClick={() => editProduct(item)}>Edit</Button>
                             <Button className='h-100px w-50px' variant="danger" onClick={() => deletingProduct(item.id)}>Delete</Button>
                         </td>

@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <Router>
-        <div style={{minWidth: '600px'}}>
+        <div>
           <NavBar/>
             <Routes>
               <Route path='/' element={<AllProducts/>}/>
@@ -39,7 +39,7 @@ function App() {
         </div>
       </Router>
 
-      <footer style={{minWidth: '600px'}}>
+      <footer>
         <NewFooter 
         instagram={'https:instagram.com'}
         twitter={'https:twitter.com'}

@@ -1,0 +1,8 @@
+@media (max-width: 645px) {
+    .itemAdminMQ {
+        display: none
+    }
+    .buttonsAdmin {
+    flex-direction: column;
+}
+}
