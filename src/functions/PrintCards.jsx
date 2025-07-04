@@ -1,41 +1,26 @@
-import { useProductCRUD } from "./useProductCRUD";
 import { Cards } from "../components/Cards";
-import { Container } from "react-bootstrap";
 import { useCart } from "./addAndDeleteToCart";
-import { useEffect } from "react";
 
-export const PrintCards = ({category, page}) => {
+export const PrintCards = ({products}) => {
     const { addToCart } = useCart();
 
-    const [data, loading, fetchError] = useProductCRUD();
-
-    if (fetchError) return  <p>{fetchError}</p>
-    if (loading) return <p>Cargando Productos...</p>
-    
-    const productsToShow = category
-        ? data.filter(item => item.category === category)
-        : data;
-
     return (
-        <Container className='mt-4 min-vh-100'>
-            <h1>{page}</h1>
-            <div className='mt-5 mb-5' style={{display: 'grid', justifyItems: 'center',gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gridTemplateRows: 'repeat(auto)', gap: '20px 20px'}}>
-                {productsToShow.map((item, index) => (
-                    <Cards
-                    generalClassName='bg-light shadow-lg p-3 mb-5 rounded'
-                    key={index}
-                    title={item.title}
-                    description={item.description.slice(0, 100)}
-                    category={category}
-                    image={item.image}
-                    primaryDisplay='d-block mt-2'
-                    click={() => addToCart(item)}
-                    buttonText={'Add to Cart'}
-                    >
-                        {item.price}
-                    </Cards>
-                ))}
-            </div>
-        </Container>
+        <div className='mt-5 mb-5' style={{display: 'grid', justifyItems: 'center',gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gridTemplateRows: 'repeat(auto)', gap: '20px 20px'}}>
+            {products.map((item, index) => (
+                <Cards
+                generalClassName='bg-light shadow-lg p-3 mb-5 rounded'
+                key={index}
+                title={item.title}
+                description={item.description.slice(0, 100)}
+                category={item.category}
+                image={item.image}
+                primaryDisplay='d-block mt-2'
+                click={() => addToCart(item)}
+                buttonText={'Add to Cart'}
+                >
+                    {item.price}
+                </Cards>
+            ))}
+        </div>
     )
 }

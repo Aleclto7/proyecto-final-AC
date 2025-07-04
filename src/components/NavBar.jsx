@@ -42,7 +42,7 @@ export const NavBar = () => {
                         <Nav className="" variant='underline'>
                             <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/">AllProducts</Nav.Link>
                             <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/electronics">Electronics</Nav.Link>
-                            <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/jewelery">Jewelery</Nav.Link>
+                            <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/kids">Kids</Nav.Link>
                             
                             {user && (
                                 <>

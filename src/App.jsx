@@ -1,7 +1,7 @@
 import {NavBar} from './components/NavBar'
 import {AllProducts} from './pages/AllProducts'
 import {Electronics} from './pages/Electronics'
-import {Jewelery} from './pages/Jewelery'
+import {Kids} from './pages/Kids'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NewFooter } from './components/Footer'
@@ -21,7 +21,7 @@ function App() {
             <Routes>
               <Route path='/' element={<AllProducts/>}/>
               <Route path='/electronics' element={<Electronics/>}/>
-              <Route path='/jewelery' element={<Jewelery/>}/>
+              <Route path='/kids' element={<Kids/>}/>
               <Route path='/shoppingCart' element={<ShoppingCart/>}/>
               <Route path='/login' element={<Login/>}/>
               <Route path='/profile' element={

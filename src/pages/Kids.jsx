@@ -1,14 +1,11 @@
 import { PrintCards } from '../functions/PrintCards';
 import { useProductCRUD } from "../functions/useProductCRUD";
 import { Container } from "react-bootstrap";
-import { SearchBar } from '../components/searchBar'
-import { useState } from 'react'
 
-export const AllProducts = () => {
-    const [filteredProducts, setFilteredProducts] = useState([]);
+export const Kids = () => {
+    const category = 'Kids'
     const [data, loading, fetchError] = useProductCRUD();
-    const category = ''
-    
+
     if (fetchError) return  <p>{fetchError}</p>
     if (loading) return <p>Cargando Productos...</p>
     
@@ -18,9 +15,8 @@ export const AllProducts = () => {
 
     return (
         <Container className='mt-4 min-vh-100'>
-            <h1>All Products</h1>
-            <SearchBar data={data} setToFilter={setFilteredProducts}/>
-            <PrintCards products ={filteredProducts ? filteredProducts : productsToShow }/>
+            <h1>Kids</h1>
+            <PrintCards products ={productsToShow}/>
         </Container>
     );
-}
+    }
