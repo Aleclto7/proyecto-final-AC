@@ -147,27 +147,27 @@ export const Admin = () => {
                     addProduct
                     }>
                     <Form.Group className="mb-3 d-flex align-items-center justify-content-between" controlId="ProductImage">
-                        <Form.Label className="w-25">Product Image</Form.Label>
+                        <Form.Label className="w-50 mb-0">Product Image</Form.Label>
                         <Form.Control value={image} className="w-75" type="Text" placeholder="Enter image URL" onChange={(e)=> setImage(e.target.value)}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3 d-flex align-items-center justify-content-between" controlId="ProductName">
-                        <Form.Label className="w-25">Product Name</Form.Label>
+                        <Form.Label className="w-50 mb-0">Product Name</Form.Label>
                         <Form.Control value={title} className="w-75" type="Text" placeholder="Enter product title" onChange={(e)=> setTitle(e.target.value)}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3 d-flex align-items-center justify-content-between" controlId="ProductDescription">
-                        <Form.Label className="w-25">Product Description</Form.Label>
+                        <Form.Label className="w-50 mb-0">Product Description</Form.Label>
                         <Form.Control value={description} className="w-75" type="Text" placeholder="Enter product description" onChange={(e)=> setDescription(e.target.value)}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3 d-flex align-items-center justify-content-between" controlId="ProductCategory">
-                        <Form.Label className="w-25">Product Category</Form.Label>
+                        <Form.Label className="w-50 mb-0">Product Category</Form.Label>
                         <Form.Control value={category} className="w-75" type="Text" placeholder="Enter product category" onChange={(e)=> setCategory(e.target.value)}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3 d-flex align-items-center justify-content-between" controlId="ProductPrice">
-                        <Form.Label className="w-25">Product Price</Form.Label>
+                        <Form.Label className="w-50 mb-0">Product Price</Form.Label>
                         <Form.Control value={price} className="w-75" type="Text" placeholder="Enter product price" onChange={(e)=> setPrice(e.target.value)}/>
                     </Form.Group> 
                         <Button variant="primary" type="submit">{
