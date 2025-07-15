@@ -47,7 +47,6 @@ export const NavBar = () => {
                             
                             {user && (
                                 <>
-                                    <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to='/profile'>Profile</Nav.Link>
                                     <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/admin">Admin</Nav.Link>
                                 </>
                             )

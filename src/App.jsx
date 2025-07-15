@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { NewFooter } from './components/Footer'
 import { ShoppingCart } from './pages/ShoppingCart'
 import { Login } from './pages/Login'
-import { Profile } from './pages/Profile'
 import {ProtectedRoutes} from './functions/ProtectedRoutes'
 import { Admin } from './pages/Admin'
 import { Favorites } from './pages/Favorites'
@@ -26,11 +25,6 @@ function App() {
               <Route path='/favorites' element={<Favorites/>}/>
               <Route path='/shoppingCart' element={<ShoppingCart/>}/>
               <Route path='/login' element={<Login/>}/>
-              <Route path='/profile' element={
-                <ProtectedRoutes>
-                  <Profile/>
-                </ProtectedRoutes>
-                }/>
               <Route path='/admin' element={
                 <ProtectedRoutes>
                   <Admin/>
@@ -43,8 +37,9 @@ function App() {
 
       <footer>
         <NewFooter 
-        instagram={'https:instagram.com'}
-        twitter={'https:twitter.com'}
+          github={'https://github.com/Aleclto7'}
+          instagram={'https://www.instagram.com/aleclto7/'}
+          linkedin={'https://www.linkedin.com/in/alexis-calixto-9a608a233/?originalSubdomain=ec'}
         />
       </footer>
     </>

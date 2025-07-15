@@ -1,15 +1,17 @@
+import { FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
+import { Button } from 'react-bootstrap'
 
 const infoFooter = [
     '© Aguizon',
     'Developed by Alexis Calixto',
     'Contact: alexiscfx1@gmail.com',
 ]
-export const NewFooter =({instagram, twitter})=>{
+export const NewFooter =({github, instagram, linkedin})=>{
     return(
         <>
             {infoFooter.map((info, index) => {
                 return (
-                    <div key={index} className='d-flex justify-content-center align-items-center bg-dark text-light' style={{height: '50px'}}>
+                    <div key={index} className='d-flex justify-content-center align-items-center bg-dark text-light' style={{height: '40px'}}>
                         <p className='m-0'>{info}</p>
                     </div>
                 )
@@ -18,11 +20,17 @@ export const NewFooter =({instagram, twitter})=>{
             className='d-flex justify-content-center align-items-center bg-dark text-light' 
             style={{height: '50px'}}
             >
-                <p className='m-0'> {`Social Media: `}  
-                <a style={{textDecoration:'none'}} href={instagram}>Instagram </a> 
-                - 
-                <a style={{textDecoration:'none'}} href={twitter}> Twitter</a>
-                </p>
+                <div className='m-0 d-flex bg-dark text-light '>  
+                    <Button variant='outline-dark' className='border-0 w-50 mb-1 text-light' href={github} >
+                        <FaGithub size='25'/>
+                    </Button>
+                    <Button variant='outline-dark' className='border-0 w-50 mb-1 text-light' href={instagram} >
+                        <FaInstagram size='25'/>
+                    </Button>
+                    <Button variant='outline-dark' className='border-0 w-50 mb-1 text-light' href={linkedin} >
+                        <FaLinkedin size='25'/>
+                    </Button>
+                </div>
             </div>
         </>
     )

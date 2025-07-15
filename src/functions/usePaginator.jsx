@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap'
 export const usePaginator = (products) => {
 
     const [actualPage, setActualPage] = useState(1)
-    const productXPage = 10
+    const productXPage = 9
     
     const indexLastProduct = actualPage * productXPage
     const indexFirsProduct = indexLastProduct - productXPage

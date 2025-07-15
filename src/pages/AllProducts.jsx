@@ -3,7 +3,7 @@ import { useProductCRUD } from "../functions/useProductCRUD";
 import { Container, Button } from "react-bootstrap";
 import { SearchBar } from '../components/SearchBar'
 import { useState } from 'react'
-import { usePaginator } from '../components/usePaginator'
+import { usePaginator } from '../functions/usePaginator'
 
 export const AllProducts = () => {
     const [isPaginator, setIsPaginator] = useState(false)
