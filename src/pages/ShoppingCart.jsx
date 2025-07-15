@@ -1,6 +1,6 @@
 import { Container } from 'react-bootstrap'
 import { Cards } from '../components/Cards'
-import { useCart } from '../functions/addAndDeleteToCart';
+import { useCart } from '../functions/CartContext';
 
 export const ShoppingCart = () => {
     const { cart, removeFromCart, decreseQuantity, increaseQuantity } = useCart();
@@ -11,13 +11,14 @@ export const ShoppingCart = () => {
 
             {
                 cart.length === 0 ? (
-                    <h4>El carrito está vacío</h4>
+                    <h4>The cart is empty</h4>
                 ) : (
                     <div>
                         {cart.map((item, index) => (
                             <Cards
-                            widthI='90vw'
+                            widthCard='90vw'
                             generalClassName='d-flex flex-row align-items-center gap-3 mb-3 bg-light border-light shadow-lg p-3 mb-5 rounded'
+                            favButtonDisable={'d-none'}
                             priceContentClassName='d-flex justify-content-between align-items-center w-100 my-1'
 
                             key={index}

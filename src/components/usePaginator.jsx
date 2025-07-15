@@ -1,4 +1,4 @@
-import { act, useState } from 'react'
+import { useState } from 'react'
 import { Button } from 'react-bootstrap'
 
 export const usePaginator = (products) => {

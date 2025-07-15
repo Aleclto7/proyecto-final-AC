@@ -10,6 +10,7 @@ import { Login } from './pages/Login'
 import { Profile } from './pages/Profile'
 import {ProtectedRoutes} from './functions/ProtectedRoutes'
 import { Admin } from './pages/Admin'
+import { Favorites } from './pages/Favorites'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
               <Route path='/' element={<AllProducts/>}/>
               <Route path='/electronics' element={<Electronics/>}/>
               <Route path='/kids' element={<Kids/>}/>
+              <Route path='/favorites' element={<Favorites/>}/>
               <Route path='/shoppingCart' element={<ShoppingCart/>}/>
               <Route path='/login' element={<Login/>}/>
               <Route path='/profile' element={

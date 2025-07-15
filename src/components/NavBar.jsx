@@ -2,7 +2,7 @@ import {Navbar, Nav, Container} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../functions/UseAuthUtils';
-import { useCart } from '../functions/addAndDeleteToCart';
+import { useCart } from '../functions/CartContext';
 import { useEffect, useState } from 'react';
 
 export const NavBar = () => {
@@ -43,6 +43,7 @@ export const NavBar = () => {
                             <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/">AllProducts</Nav.Link>
                             <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/electronics">Electronics</Nav.Link>
                             <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/kids">Kids</Nav.Link>
+                            <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/favorites">Favorites</Nav.Link>
                             
                             {user && (
                                 <>

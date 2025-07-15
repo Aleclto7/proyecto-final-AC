@@ -2,7 +2,7 @@ import { Container, Button, Form } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { AdminProductList } from "../components/AdminProductList";
 import { useProductCRUD } from "../functions/useProductCRUD";
-import { useCart } from '../functions/addAndDeleteToCart';
+import { useCart } from '../functions/CartContext';
 
 import Swal from 'sweetalert2'
 

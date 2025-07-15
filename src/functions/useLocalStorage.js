@@ -17,7 +17,9 @@ export function useLocalStorage(key, initialValue) {
     
     const setValue = value => {
         try {
-            const validValue = !value || value === undefined || value === "undefined" ? initialValue : value;
+            const isInvalid = value === undefined || value === "undefined";
+            const validValue = isInvalid ? initialValue : value;
+
             setStoredValue(validValue);
             window.localStorage.setItem(key, JSON.stringify(validValue))
         } catch (error) {
