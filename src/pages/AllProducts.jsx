@@ -1,7 +1,7 @@
 import { PrintCards } from '../functions/PrintCards';
 import { useProductCRUD } from "../functions/useProductCRUD";
 import { Container, Button } from "react-bootstrap";
-import { SearchBar } from '../components/SearchBar'
+import { searchBar } from '../components/SearchBar'
 import { useState } from 'react'
 import { usePaginator } from '../components/usePaginator'
 
