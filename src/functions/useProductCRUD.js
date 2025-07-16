@@ -69,16 +69,14 @@ export const useProductCRUD = () => {
         }
     }
     const deleteProduct = async (id) => {
-        if(window.confirm('Are you sure you want to delete this item?')){
-            try {
-                const res = await fetch (`${API_URL}/${id}`, {method:'DELETE',})
-                if(!res.ok) throw new Error('Error delete item')
-                await fetchData()
-            } 
-            catch (error) {
-                alert('Error delete item');
-                console.log(error);
-            }
+        try {
+            const res = await fetch (`${API_URL}/${id}`, {method:'DELETE',})
+            if(!res.ok) throw new Error('Error delete item')
+            await fetchData()
+        } 
+        catch (error) {
+            alert('Error delete item');
+            console.log(error);
         }
     }
 

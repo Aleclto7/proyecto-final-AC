@@ -20,15 +20,15 @@ export const NewFooter =({github, instagram, linkedin})=>{
             className='d-flex justify-content-center align-items-center bg-dark text-light' 
             style={{height: '50px'}}
             >
-                <div className='m-0 d-flex bg-dark text-light '>  
-                    <Button variant='outline-dark' className='border-0 w-50 mb-1 text-light' href={github} >
-                        <FaGithub size='25'/>
+                <div className='m-0 d-flex bg-dark text-light gap-1 '>  
+                    <Button variant='outline-secondary' className='border-0 w-50 mb-1' href={github} >
+                        <FaGithub color="white" size='25'/>
                     </Button>
-                    <Button variant='outline-dark' className='border-0 w-50 mb-1 text-light' href={instagram} >
-                        <FaInstagram size='25'/>
+                    <Button variant='outline-secondary' className='border-0 w-50 mb-1' href={instagram} >
+                        <FaInstagram color="white" size='25'/>
                     </Button>
-                    <Button variant='outline-dark' className='border-0 w-50 mb-1 text-light' href={linkedin} >
-                        <FaLinkedin size='25'/>
+                    <Button variant='outline-secondary' className='border-0 w-50 mb-1' href={linkedin} >
+                        <FaLinkedin color="white" size='25'/>
                     </Button>
                 </div>
             </div>

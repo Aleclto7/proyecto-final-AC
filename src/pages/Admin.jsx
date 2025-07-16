@@ -4,8 +4,6 @@ import { AdminProductList } from "../components/AdminProductList";
 import { useProductCRUD } from "../functions/useProductCRUD";
 import { useCart } from '../functions/CartContext';
 
-import Swal from 'sweetalert2'
-
 export const Admin = () => {
     const { swallAlert } = useCart();
 
@@ -121,7 +119,6 @@ export const Admin = () => {
     }
     const deletingProduct = (id) => {
         deleteProduct(id)
-        swallAlert("The product was successfully disposed of.")
     }
 
     return (

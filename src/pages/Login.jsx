@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import {useAuth}   from '../functions/UseAuthUtils'
+import { useAuth }   from '../functions/UseAuthUtils'
 import { useState } from "react";
 import { Alert } from 'react-bootstrap'
 
