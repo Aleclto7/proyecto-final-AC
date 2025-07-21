@@ -51,29 +51,29 @@ export const AdminProductList = ({products, editProduct, deletingProduct}) => {
                         </td>
                     </tr>
                 ))}
-                            <Modal
-                                size="sm"
-                                show={showModal}
-                                onHide={handleClose}
-                                aria-labelledby="delete-product-modal bg-dark"
-                                >
-                                <Modal.Header closeButton className='bg-dark text-white border-dark py-2'>
-                                    <Modal.Title id="delete-product-modal">
-                                        Delete Product
-                                    </Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body className='bg-dark text-white py-2'>
-                                    Are you sure you want to remove the product <strong>{produtToDelete?.title}</strong>?
-                                </Modal.Body>
-                                <Modal.Footer className='bg-dark text-white border-dark py-2'>
-                                    <Button variant="danger" onClick={confirmDelete}>
-                                        Delete
-                                    </Button>
-                                    <Button variant="secondary" onClick={handleClose}>
-                                        Calcel
-                                    </Button>
-                                </Modal.Footer>
-                            </Modal>
+                <Modal
+                    size="sm"
+                    show={showModal}
+                    onHide={handleClose}
+                    aria-labelledby="delete-product-modal bg-dark"
+                    >
+                    <Modal.Header closeButton className='bg-dark text-white border-dark py-2'>
+                        <Modal.Title id="delete-product-modal">
+                            Delete Product
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className='bg-dark text-white py-2'>
+                        Are you sure you want to remove the product <strong>{produtToDelete?.title}</strong>?
+                    </Modal.Body>
+                    <Modal.Footer className='bg-dark text-white border-dark py-2'>
+                        <Button variant="danger" onClick={confirmDelete}>
+                            Delete
+                        </Button>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Calcel
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </tbody>
     </Table>
     )
