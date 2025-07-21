@@ -1,4 +1,4 @@
-import {Navbar, Nav, Container} from 'react-bootstrap';
+import {Navbar, Container, Nav, Offcanvas, Button, Form} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../functions/UseAuthUtils';
@@ -23,60 +23,90 @@ export const NavBar = () => {
 
     }, [cart]);
 
-    return(
-        <Navbar bg="dark" variant="dark underline" expand="lg" className="justify-content-between">
-            <Container className='d-flex justify-content-between'>
-                <div className='d-flex align-items-center'>
-                    <img
-                        alt="Logo"
-                        src="/public/apple-touch-icon.png"
-                        width="40"
-                        height="40"
-                        className="d-inline-block align-top me-3 border-0 border-secondary rounded-circle"
-                    />
-                    <Navbar.Brand as={Link} to="/">Aguizon</Navbar.Brand>
-                </div>
-                <div className='d-flex align-items-center'>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="" variant='underline'>
-                            <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/">AllProducts</Nav.Link>
-                            <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/electronics">Electronics</Nav.Link>
-                            <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/kids">Kids</Nav.Link>
-                            <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/favorites">Favorites</Nav.Link>
-                            
-                            {user && (
-                                <>
-                                    <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/admin">Admin</Nav.Link>
-                                </>
-                            )
-                            }
-                            {!user
-                                ? 
-                                <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/login">Login</Nav.Link> 
-                                :
-                                // <button className='btn btn-outline-light' onClick={closeSession}>LogOut</button>
-                                <Nav.Link style={{margin: 'auto', padding: '0px'}} onClick={closeSession} >Log Out</Nav.Link>
-                            }
+    const expand = 'md'
 
-                            <Nav.Link style={{margin: 'auto', padding: '0px'}} as={Link} to="/ShoppingCart" className='position-relative d-block'>
-                            <img 
-                                src="https://images.icon-icons.com/2785/PNG/512/trolley_cart_icon_177366.png" 
-                                alt="Icono Carrito" 
-                                width="35"
-                                height="35"
-                            />
-                            {cart.length > 0 
-                            ?
-                            <span style={{fontSize: '10px'}} className="d-flex align-items-center justify-content-center h-50 w-50 position-absolute start-100 top-0 mt-2 translate-middle rounded-circle bg-secondary light" >{quantity}</span>
-                            :
-                            false
-                            }
-                            </Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </div>
-            </Container>
-        </Navbar>
+    return(
+    <Navbar bg="dark" variant="dark" expand="md" className="mb-3">
+    <Container fluid className="justify-content-between">
+        <div className="d-flex align-items-center">
+        <img
+            alt="Logo"
+            src="/apple-touch-icon.png"
+            width="40"
+            height="40"
+            className="d-inline-block align-top me-3 border-0 border-secondary rounded-circle"
+        />
+        <Navbar.Brand as={Link} to="/">
+            Aguizon
+        </Navbar.Brand>
+        </div>
+
+        <Navbar.Toggle aria-controls="offcanvasNavbar-expand-md" />
+
+        <Navbar.Offcanvas
+        id="offcanvasNavbar-expand-md"
+        aria-labelledby="offcanvasNavbarLabel-expand-md"
+        placement="end"
+        className="bg-dark text-white"
+        style={{width: '13rem'}}
+        >
+        <Offcanvas.Header closeButton closeVariant="white">
+            <Offcanvas.Title id="offcanvasNavbarLabel-expand-md">
+            Menu
+            </Offcanvas.Title>
+        </Offcanvas.Header>
+
+        <Offcanvas.Body>
+            <Nav className="justify-content-end flex-grow-1 pe-3 ">
+            <Nav.Link as={Link} to="/" className="text-white d-flex align-items-center">
+                AllProducts
+            </Nav.Link>
+            <Nav.Link as={Link} to="/electronics" className="text-white d-flex align-items-center">
+                Electronics
+            </Nav.Link>
+            <Nav.Link as={Link} to="/kids" className="text-white d-flex align-items-center">
+                Kids
+            </Nav.Link>
+            <Nav.Link as={Link} to="/favorites" className="text-white d-flex align-items-center">
+                Favorites
+            </Nav.Link>
+
+            {user && (
+                <Nav.Link as={Link} to="/admin" className="text-white d-flex align-items-center">
+                Admin
+                </Nav.Link>
+            )}
+
+            {!user ? (
+                <Nav.Link as={Link} to="/login" className="text-white d-flex align-items-center">
+                Login
+                </Nav.Link>
+            ) : (
+                <Nav.Link onClick={closeSession} className="text-white d-flex align-items-center" style={{ cursor: "pointer" }}>
+                Log Out
+                </Nav.Link>
+            )}
+
+            <Nav.Link as={Link} to="/ShoppingCart" className="position-relative d-block text-white d-flex align-items-center">
+                <img
+                src="https://images.icon-icons.com/2785/PNG/512/trolley_cart_icon_177366.png"
+                alt="Cart Icon"
+                width="35"
+                height="35"
+                />
+                {cart.length > 0 && (
+                <span
+                    style={{ fontSize: '10px' }}
+                    className="d-flex align-items-center justify-content-center h-50 w-50 position-absolute start-100 top-0 mt-2 translate-middle rounded-circle bg-secondary text-light"
+                >
+                    {quantity}
+                </span>
+                )}
+            </Nav.Link>
+            </Nav>
+        </Offcanvas.Body>
+        </Navbar.Offcanvas>
+    </Container>
+    </Navbar>
     )
 }
