@@ -29,7 +29,7 @@ export const NavBar = () => {
                 <div className='d-flex align-items-center'>
                     <img
                         alt="Logo"
-                        src="https://png.pngtree.com/png-clipart/20210310/original/pngtree-mascot-logo-red-bird-transparent-background-png-image_5949929.jpg"
+                        src="/public/apple-touch-icon.png"
                         width="40"
                         height="40"
                         className="d-inline-block align-top me-3 border-0 border-secondary rounded-circle"
