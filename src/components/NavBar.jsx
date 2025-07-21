@@ -88,20 +88,22 @@ export const NavBar = () => {
             )}
 
             <Nav.Link as={Link} to="/ShoppingCart" className="position-relative d-block text-white d-flex align-items-center">
-                <img
-                src="https://images.icon-icons.com/2785/PNG/512/trolley_cart_icon_177366.png"
-                alt="Cart Icon"
-                width="35"
-                height="35"
-                />
-                {cart.length > 0 && (
-                <span
-                    style={{ fontSize: '10px' }}
-                    className="d-flex align-items-center justify-content-center h-50 w-50 position-absolute start-100 top-0 mt-2 translate-middle rounded-circle bg-secondary text-light"
-                >
-                    {quantity}
-                </span>
-                )}
+                <div className='position-relative'>
+                    <img
+                    src="https://images.icon-icons.com/2785/PNG/512/trolley_cart_icon_177366.png"
+                    alt="Cart Icon"
+                    width="35"
+                    height="35"
+                    />
+                    {cart.length > 0 && (
+                        <span
+                            style={{ fontSize: '10px' }}
+                            className="d-flex align-items-center justify-content-center h-50 w-50 position-absolute start-100 top-0 mt-2 translate-middle rounded-circle bg-secondary text-light"
+                        >
+                            {quantity}
+                        </span>
+                    )}
+                </div>
             </Nav.Link>
             </Nav>
         </Offcanvas.Body>
